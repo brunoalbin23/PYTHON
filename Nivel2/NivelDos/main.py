@@ -1,16 +1,32 @@
-# This is a sample Python script.
-
-# Press Mayús+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def esPalindromo(frase):
+    contador = -1
+    for i in frase:
+        if i != frase[contador]:
+            return False
+        contador -= 1
+    return True
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def eliminar_duplicados(lista):
+    return list(set(lista))
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+def factorial_recursivo(num):
+    if num == 0 or num == 1:
+        return 1
+    else:
+        return num * factorial_recursivo(num - 1)
+
+
+def suma_digitos(num):
+    digitos = str(num)
+    suma = 0
+    for i in digitos:
+        suma += int(i)
+    return suma
+
+
+print(esPalindromo("ala"))
+print(eliminar_duplicados(["apple", "banana", "cherry", "cherry", "pera", "banana", "anana"]))
+print(factorial_recursivo(5))
+print(suma_digitos(5465))
