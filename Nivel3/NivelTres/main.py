@@ -98,7 +98,77 @@ def calcular_mediana(lista_nums):
 
 
 def es_anagrama(frase1, frase2):
-    
+    letras1 = contar_caracteres(frase1)
+    letras2 = contar_caracteres(frase2)
+    return letras1 == letras2
+
+
+def contar_caracteres(frase):
+    caracteres_cantidad = {}
+    for i in frase:
+        if i not in caracteres_cantidad.keys():
+            caracteres_cantidad[i] = 1
+        else:
+            caracteres_cantidad[i] += 1
+    return caracteres_cantidad
+
+
+def code_cesar(frase, desplazamiento):
+    devolver = []
+    for i in frase:
+        devolver.append(i)
+    contador = 0
+    for i in range(desplazamiento, len(frase)):
+        devolver[i] = frase[contador]
+        contador += 1
+    for i in range(0, desplazamiento):
+        devolver[i] = frase[contador]
+        contador += 1
+    return ''.join(devolver)
+
+
+def decode_cesar(frase, desplazamiento):
+    devolver = []
+    for i in frase:
+        devolver.append(i)
+    contador = desplazamiento * (-1)
+    otro_conta = 0
+    for i in range(0, desplazamiento * (-1) - 1):
+        devolver[i] = frase[contador]
+        contador += 1
+    for i in range(desplazamiento * -1 - 1, len(frase)):
+        devolver[i] = frase[otro_conta]
+        otro_conta += 1
+    return ''.join(devolver)
+
+
+def factores_primos(num):
+    primos = numeros_primos(num)
+    lista_factores = []
+    while True:
+        for i in primos:
+            if num % i == 0:
+                num = num // i
+                lista_factores.append(i)
+                break
+        if num == 1:
+            break
+    return lista_factores
+
+
+def numeros_primos(num):
+    primos = []
+    if num >= 2:
+        primos.append(2)
+    for i in range(3, num + 1):
+        es_primo = True
+        for j in range(2, i + 1):
+            if i % j == 0 and i != j:
+                es_primo = False
+                break
+        if es_primo:
+            primos.append(i)
+    return primos
 
 
 # print(numeros_narcisistas(500))
@@ -106,4 +176,8 @@ def es_anagrama(frase1, frase2):
 # print(imprimir_secuencia_fibonacci(8))
 # adivinar_numero()
 # contar_palabras("hola como estas amigo amigo estas hola como jaja hola jaja ja hola como estas hola ja")
-print(calcular_mediana([25,6,33,4,12,5]))
+# print(calcular_mediana([25,6,33,4,12,5]))
+# print(es_anagrama("hla coomlo aeennndals","hola cllomo annenedas"))
+# print(code_cesar("vamos a hacer de cuenta que esto es una frase super mega ñaa dificl", 22))
+# print(decode_cesar(" super mega ñaa dificlvamos a hacer de cuenta que esto es una frase", -22))
+# print(factores_primos(60))
