@@ -1,4 +1,4 @@
-def pasar_a_numeros(cadena):  #Esta funcion devuelve una lista con los valores de cada caracter
+def pasar_a_numeros(cadena):  #Esta funcion devuelve una lista con los valores de cada caracter referenciado a la letra del obligatorio
     lista_valores = []
     for i in cadena:
         if i == " ":
@@ -16,7 +16,7 @@ def pasar_a_numeros(cadena):  #Esta funcion devuelve una lista con los valores d
     return lista_valores
 
 
-def criptosistema1(lista_cadena, a, b):  # Funcion que encirpta dado el a y b que queremos
+def criptosistema1(lista_cadena, a, b):
     lista_encriptada = []
     for i in lista_cadena:
         lista_encriptada.append((a * i + b) % 29)
@@ -41,7 +41,7 @@ def pasar_a_letras(lista_encripatada):  # Pasamos de numeros a valores nuevament
     return cadena_encriptada
 
 
-def letra_mas_repeticiones(cadena):
+def letra_mas_repeticiones(cadena):          # devuelve la letra mas repetida de la cadena
     contador_caracteres = {}
     for i in cadena:
         if i not in contador_caracteres:
@@ -57,7 +57,7 @@ def letra_mas_repeticiones(cadena):
     return letra
 
 
-def buscar_caracter(caracter, cadena):
+def buscar_caracter(caracter, cadena):   # busca el caracter en la cadena y devuelve todas las posiciones
     posiciones = []
     for i in range(0, len(cadena) - 1):
         if cadena[i] == caracter:
@@ -65,13 +65,12 @@ def buscar_caracter(caracter, cadena):
     return posiciones
 
 
-# esta funcionan anda mal, no entiendo la logica para desencriptar una vez q este eso anda joya
 def desencriptar(lista_encriptada, a, b):
     lista_desencriptada = []
     for i in lista_encriptada:
         for z in range(0, 28):
-            if (i * z) % 29 == 1:
-                lista_desencriptada.append(((i - b) * z) % 29)
+            if (z * a) % 29 == 1:
+                lista_desencriptada.append((z * (i - b)) % 29)
     return lista_desencriptada
 
 
@@ -79,14 +78,14 @@ print("\n-----------------  PARTE 3  -----------------")
 
 cadena = "colombia lo empato en el minuto noventa y seis y uruguay lo gano sacando del medio en el minuto ciento uno"
 
-texto_pasado_numero1 = pasar_a_numeros(cadena)
-texto_criptografiado = criptosistema1(texto_pasado_numero1, 5, 15)
-texto_traducido1 = pasar_a_letras(texto_criptografiado)
+texto_pasado_numero = pasar_a_numeros(cadena)
+texto_criptografiado = criptosistema1(texto_pasado_numero, 5, 15)
+texto_traducido = pasar_a_letras(texto_criptografiado)
 
 print("Cadena que queremos encriptar: '" + cadena + "'")
-print("Cadena en valores númericos: " + str(texto_pasado_numero1))
+print("Cadena en valores númericos: " + str(texto_pasado_numero))
 print("Cadena encriptada en valores númericos: " + str(texto_criptografiado))
-print("Cadena encriptada final: '" + texto_traducido1 + "'")
+print("Cadena encriptada final: '" + texto_traducido + "'")
 
 print("\n-----------------  PARTE 4  -----------------")
 
@@ -98,13 +97,14 @@ print(f"El caracter '{caracter_mas}' se encunetra en las posiciones: {str(posici
 
 print("\n-----------------  PARTE 5  -----------------")
 
-caracter_mas_cripto1 = letra_mas_repeticiones(texto_traducido1)
-posiciones_caracter_cripto1 = buscar_caracter(caracter_mas_cripto1, texto_traducido1)
+caracter_mas_cripto = letra_mas_repeticiones(texto_traducido)
+posiciones_caracter_cripto = buscar_caracter(caracter_mas_cripto, texto_traducido)
 
-print("El caracter mas encontrado es: '" + caracter_mas_cripto1 + "'")
-print(f"El caracter '{caracter_mas_cripto1}' se encunetra en las posiciones: {str(posiciones_caracter_cripto1)}")
+print("El caracter mas encontrado es: '" + caracter_mas_cripto + "'")
+print(f"El caracter '{caracter_mas_cripto}' se encunetra en las posiciones: {str(posiciones_caracter_cripto)}")
 
 print("\n-----------------  PARTE 8  -----------------")
-print(texto_pasado_numero1)
+print(texto_pasado_numero)
 print(texto_criptografiado)
-print(desencriptar(texto_criptografiado, 5, 15))
+print(desencriptar(texto_criptografiado, 5, 15))  #Chequeamos que es igual a el texto_pasado_numero
+print(pasar_a_letras(desencriptar(texto_criptografiado, 5, 15)))
