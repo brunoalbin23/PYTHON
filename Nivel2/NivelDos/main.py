@@ -75,3 +75,4 @@ def numeros_primos(num):
 # calculo_ocurrencia("hola como estas jajajjaa")
 # dibujar_cuadrado(5, "*")
 # print(numeros_primos(50))
+
