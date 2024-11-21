@@ -17,6 +17,11 @@ class ManejoDeTiempo:
                 break
             print("Fecha invalida o formato no correspondiente, pofavor intente denuevo")
 
+        fecha_nacimiento = datetime(int(ano), int(mes), int(dia))
+        dias_vividos = (fecha_actual-fecha_nacimiento).days
+
+        print(f"Si naciste en la fecha {dia}/{mes}/{ano} has vivido {dias_vividos} días hasta la fecha")
+
     def validar_fecha(self, dia, mes, ano):
 
         if not dia.isnumeric() or not mes.isnumeric() or not ano.isnumeric():
