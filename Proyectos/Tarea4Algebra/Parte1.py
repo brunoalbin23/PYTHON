@@ -1,4 +1,5 @@
 def pasar_a_numeros(cadena):  #Esta funcion devuelve una lista con los valores de cada caracter referenciado a la letra del obligatorio
+    cadena = cadena.lower()
     lista_valores = []
     for i in cadena:
         if i == " ":
@@ -104,7 +105,7 @@ print("El caracter mas encontrado es: '" + caracter_mas_cripto + "'")
 print(f"El caracter '{caracter_mas_cripto}' se encunetra en las posiciones: {str(posiciones_caracter_cripto)}")
 
 print("\n-----------------  PARTE 8  -----------------")
-print(texto_pasado_numero)
-print(texto_criptografiado)
-print(desencriptar(texto_criptografiado, 5, 15))  #Chequeamos que es igual a el texto_pasado_numero
-print(pasar_a_letras(desencriptar(texto_criptografiado, 5, 15)))
+print("Cadena original en formato numerico: " + str(texto_pasado_numero))
+print("Cadena en formato numerico encriptada: " + str(texto_criptografiado))
+print("Cadena en formato numerico desencriptada: " + str(desencriptar(texto_criptografiado, 5, 15)))  #Chequeamos que es igual a el texto_pasado_numero
+print("Mensaje desencriptado: " + str(pasar_a_letras(desencriptar(texto_criptografiado, 5, 15))))
